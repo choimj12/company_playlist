@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "974604163982",
+    "firebase_url": "https://company-playlist.firebaseio.com",
+    "project_id": "company-playlist",
+    "storage_bucket": "company-playlist.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974604163982:android:0fa894c8f7231f5323a2df",
+        "android_client_info": {
+          "package_name": "minji.companyplaylist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "974604163982-d2ph91eckhjg3u034hk1o2ath9bs36e1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYnLvV4Fam2QQiDTNBfuCDP6uiF7Xe2Z0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "974604163982-d2ph91eckhjg3u034hk1o2ath9bs36e1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

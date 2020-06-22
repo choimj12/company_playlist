@@ -1,0 +1,245 @@
+import 'package:companyplaylist/generated/i18n.dart';
+import 'package:flutter/material.dart';
+import 'package:companyplaylist/src/format_code.dart';
+import 'package:companyplaylist/Theme/theme.dart';
+import 'package:table_calendar/table_calendar.dart';
+class MainPage extends StatefulWidget{
+  @override
+  MainPageState createState() => MainPageState();
+}
+
+class MainPageState extends State<MainPage>{
+  Format format = Format();
+  int tabIndex = 1;
+  CalendarController _calendarController;
+
+  @override
+  void initState() {
+    super.initState();
+    _calendarController = CalendarController();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: main_color,
+        elevation: 0,
+        centerTitle: true,
+        title: Text(
+          format.dateFormat(DateTime.now())
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Stack(
+              children: <Widget>[
+                Container(
+                  height: 50,
+                  color: main_color
+                ),
+                Positioned(
+                  //top: 20,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30),
+                        topRight: Radius.circular(30)
+                      )
+                    ),
+                    child: TableCalendar(
+                      calendarController: _calendarController,
+                      startingDayOfWeek: StartingDayOfWeek.monday,
+                    ),
+                  ),
+                )
+              ],
+            ),
+            Container(
+              height: 50,
+              width: 390,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: Colors.blueGrey
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  InkWell(
+                    child: Container(
+                      height: 40,
+                      width: 115,
+                      child: Center(
+                        child: Text(
+                          "나의 일정",
+                          style: TextStyle(
+                              fontFamily: fontStyle,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff2F3A55)
+                          ),
+                        ),
+                      ),
+                      decoration: tabIndex == 0 ? BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Colors.white
+                      ) : null
+                    ),
+                    onTap: () {
+                      setState(() {
+                        tabIndex = 0;
+                      });
+                    },
+                  ),
+                  VerticalDivider(
+                    thickness: 2,
+                    color: Colors.blueGrey[800],
+                    indent: 10,
+                    endIndent: 10,
+                  ),
+                  InkWell(
+                    child: Container(
+                        height: 40,
+                        width: 115,
+                        child: Center(
+                          child: Text(
+                            "동료 일정",
+                            style: TextStyle(
+                              fontFamily: fontStyle,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff2F3A55)
+                            ),
+                          ),
+                        ),
+                        decoration: tabIndex == 1 ? BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: Colors.white
+                        ) : null
+                    ),
+                    onTap: () {
+                      setState(() {
+                        tabIndex = 1;
+                      });
+                    },
+                  ),
+                  VerticalDivider(
+                    thickness: 2,
+                    color: Colors.blueGrey[800],
+                    indent: 10,
+                    endIndent: 10,
+                  ),
+                  InkWell(
+                    child: Container(
+                        height: 40,
+                        width: 115,
+                        child: Center(
+                          child: Text(
+                            "내 결재함",
+                            style: TextStyle(
+                                fontFamily: fontStyle,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xff2F3A55)
+                            ),
+                          ),
+                        ),
+                        decoration: tabIndex == 2 ? BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: Colors.white
+                        ) : null
+                    ),
+                    onTap: () {
+                      setState(() {
+                        tabIndex = 2;
+                      });
+                    },
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 5),
+            ),
+            Container(
+              width: 380,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: Color(0xffEEEEEE)
+              ),
+              child: tabIndex == 0 ? Text(
+                "나의 일정",
+                style: TextStyle(
+                  fontSize: 30,
+                ),
+              ) : tabIndex == 1 ? Text(
+                "동료 일정",
+                style: TextStyle(
+                  fontSize: 30,
+                ),
+              ) : Text(
+                "내 결재함",
+                style: TextStyle(
+                  fontSize: 30
+                ),
+              )
+            )
+          ],
+        )
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.calendar_today,
+              size: 25,
+            ),
+              title: Text(
+                  ""
+              )
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+                Icons.search,
+              size: 25,
+            ),
+            title: Text(
+              ""
+            )
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.add_box,
+              size: 35,
+            ),
+            title: Text(
+            ""
+            )
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+                Icons.notifications_none,
+              size: 25,
+            ),
+              title: Text(
+                  ""
+              )
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+                Icons.menu,
+              size: 25,
+            ),
+              title: Text(
+                  ""
+              )
+          ),
+        ]
+      ),
+    );
+  }
+}
