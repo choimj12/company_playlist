@@ -25,10 +25,36 @@ class MainPageState extends State<MainPage>{
       appBar: AppBar(
         backgroundColor: main_color,
         elevation: 0,
-        centerTitle: true,
-        title: Text(
-          format.dateFormat(DateTime.now())
+        automaticallyImplyLeading: false,
+
+        title: Row(
+          children: <Widget>[
+            Icon(
+              Icons.power_settings_new,
+              size: 30,
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 10),
+            ),
+            Text(
+              "근무중"
+            )
+          ],
         ),
+        actions: <Widget>[
+          Container(
+            alignment: Alignment.center,
+            width: 90,
+            child: Container(
+              width: 40,
+              height: 40,
+              color: Colors.yellow,
+              child: Text(
+                "민"
+              ),
+            )
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -52,6 +78,7 @@ class MainPageState extends State<MainPage>{
                     child: TableCalendar(
                       calendarController: _calendarController,
                       startingDayOfWeek: StartingDayOfWeek.monday,
+                      locale: 'ko_KR',
                     ),
                   ),
                 )
@@ -164,7 +191,7 @@ class MainPageState extends State<MainPage>{
               padding: EdgeInsets.only(bottom: 5),
             ),
             Container(
-              width: 380,
+              width: 390,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   color: Color(0xffEEEEEE)

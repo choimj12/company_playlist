@@ -11,6 +11,9 @@ import 'package:companyplaylist/Theme/theme.dart';
 //Code
 import 'package:companyplaylist/src/login_code.dart';
 
+//Model
+import 'package:companyplaylist/model/user_model.dart';
+
 class LoginPage extends StatefulWidget{
   @override
   LoginPageState createState() => LoginPageState();
@@ -25,6 +28,8 @@ class LoginPageState extends State<LoginPage>{
 
   TextEditingController _mailCon;
   TextEditingController _pwCon;
+
+  UserModel userModel = UserModel();
 
   @override
   void initState(){
@@ -119,7 +124,6 @@ class LoginPageState extends State<LoginPage>{
                   TextFormField(
                     controller: _mailCon,
                     focusNode: _mailFocus,
-
                     onTap: (){
                       setState(() {
                         FocusScope.of(context).requestFocus(_mailFocus);
@@ -185,7 +189,7 @@ class LoginPageState extends State<LoginPage>{
                             loginSuccess = await loginCheck.loginCheck(_mailCon.text, _pwCon.text);
 
                             if(loginSuccess){
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage(_mailCon.text)));
                             }
                           },
                         ),

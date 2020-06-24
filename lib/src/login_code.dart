@@ -5,10 +5,10 @@ class LoginCheck{
   Future<bool> loginCheck(String email, String password) async{
     bool _loginCheckValue = false;
 
-    await Firestore.instance.collection("user_account").getDocuments().then((doc){
+    await Firestore.instance.collection("user").getDocuments().then((doc){
       for(int i = 0; i < doc.documents.length; i++){
-        if(doc.documents.elementAt(i).data["ID"] == email){
-          if(doc.documents.elementAt(i).data["PW"] == password){
+        if(doc.documents.elementAt(i).data["id"] == email){
+          if(doc.documents.elementAt(i).data["password"] == password){
             _loginCheckValue = true;
             break;
           }
