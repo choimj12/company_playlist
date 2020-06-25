@@ -1,3 +1,4 @@
+import 'package:companyplaylist/src/user_provider_code.dart';
 import 'package:flutter/material.dart';
 
 //Screen
@@ -13,6 +14,7 @@ import 'package:companyplaylist/src/login_code.dart';
 
 //Model
 import 'package:companyplaylist/model/user_model.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget{
   @override
@@ -28,8 +30,6 @@ class LoginPageState extends State<LoginPage>{
 
   TextEditingController _mailCon;
   TextEditingController _pwCon;
-
-  UserModel userModel = UserModel();
 
   @override
   void initState(){
@@ -51,6 +51,8 @@ class LoginPageState extends State<LoginPage>{
 
   @override
   Widget build(BuildContext context) {
+    UserProvider up = Provider.of<UserProvider>(context);
+
     return Scaffold(
       body: Stack(
         children: <Widget>[
@@ -136,7 +138,6 @@ class LoginPageState extends State<LoginPage>{
                   TextFormField(
                     controller: _pwCon,
                     focusNode: _pwFocus,
-
                     onTap: (){
                       setState(() {
                         FocusScope.of(context).requestFocus(_pwFocus);
@@ -158,22 +159,13 @@ class LoginPageState extends State<LoginPage>{
                           borderRadius: BorderRadius.circular(12),
                           color: red_color
                         ),
-//                        child: Center(
-//                          child: Text(
-//                            "로그인",
-//                            style: TextStyle(
-//                              fontFamily: fontStyle,
-//                              fontSize: 18,
-//                              fontWeight: FontWeight.w500,
-//                              color: Color(0xffFFFFFF)
-//                            ),
-//                          ),
-//                        ),
+
                         child: RaisedButton(
-                          color: red_color,
+                        color: red_color,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),
+
                           child: Text(
                             "로그인",
                             style: TextStyle(
@@ -183,13 +175,20 @@ class LoginPageState extends State<LoginPage>{
                               color: Color(0xffFFFFFF),
                             ),
                           ),
+
                           onPressed: () async {
                             bool loginSuccess = false;
 
                             loginSuccess = await loginCheck.loginCheck(_mailCon.text, _pwCon.text);
 
                             if(loginSuccess){
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage(_mailCon.text)));
+                              print(autoLoginValue);
+                              if(autoLoginValue == true){
+                                up.setPreferencesLoginUserEmail(_mailCon.text);
+                              }
+                              else{
+                                up.setUser(_mailCon.text);
+                              }
                             }
                           },
                         ),
@@ -203,7 +202,6 @@ class LoginPageState extends State<LoginPage>{
                       ),
                       Checkbox(
                         value: autoLoginValue,
-                        //focusColor: main_color,
                         activeColor: main_color,
                         onChanged: (bool value) {
                           setState(() {

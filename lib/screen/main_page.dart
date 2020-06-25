@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:companyplaylist/src/format_code.dart';
 import 'package:companyplaylist/Theme/theme.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:companyplaylist/screen/my_schedule_page.dart';
+
 class MainPage extends StatefulWidget{
   @override
   MainPageState createState() => MainPageState();
@@ -76,6 +78,7 @@ class MainPageState extends State<MainPage>{
                       )
                     ),
                     child: TableCalendar(
+                      initialCalendarFormat: CalendarFormat.week,
                       calendarController: _calendarController,
                       startingDayOfWeek: StartingDayOfWeek.monday,
                       locale: 'ko_KR',
@@ -196,12 +199,7 @@ class MainPageState extends State<MainPage>{
                   borderRadius: BorderRadius.circular(8),
                   color: Color(0xffEEEEEE)
               ),
-              child: tabIndex == 0 ? Text(
-                "나의 일정",
-                style: TextStyle(
-                  fontSize: 30,
-                ),
-              ) : tabIndex == 1 ? Text(
+              child: tabIndex == 0 ? MySchedulePage() : tabIndex == 1 ? Text(
                 "동료 일정",
                 style: TextStyle(
                   fontSize: 30,

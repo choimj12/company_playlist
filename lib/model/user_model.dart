@@ -24,7 +24,6 @@ class UserModel{
   void fetchUserInfo(){
     Firestore.instance.collection("user").getDocuments().then((doc){
       final List<User> fetchedUserInfo = [];
-      print(doc.documents.length);
       doc.documents.forEach((data) {
         User user = User(
           id: data["id"],
