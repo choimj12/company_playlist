@@ -25,10 +25,9 @@ class MyScheduleModel{
     _mySchedule.add(mySchedule);
   }
 
-  fetchMySchedule(){
-    print("시작");
-    Firestore.instance.collection("my_schedule").getDocuments().then((doc){
-      print(doc.documents.length);
+  Future<List<MySchedule>> fetchMySchedule() async{
+    await Firestore.instance.collection("my_schedule").getDocuments().then((doc){
+
       final List<MySchedule> fetchedSchedule = [];
       doc.documents.forEach((data){
         MySchedule mySchedule = MySchedule(
@@ -42,10 +41,10 @@ class MyScheduleModel{
           endTime: data["end_time"],
           progress: data["progress"],
         );
-        print(mySchedule);
         fetchedSchedule.add(mySchedule);
       });
       _mySchedule = fetchedSchedule;
     });
+    return _mySchedule;
   }
 }

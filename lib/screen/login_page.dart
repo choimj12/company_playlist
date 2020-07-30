@@ -1,20 +1,18 @@
-import 'package:companyplaylist/src/user_provider_code.dart';
+//로그인 페이지 입니다.
+
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
 //Screen
 import 'package:companyplaylist/screen/singup_page.dart';
 import 'package:companyplaylist/screen/snslogin_page.dart';
-import 'package:companyplaylist/screen/main_page.dart';
 
-//Theme import
+//Theme
 import 'package:companyplaylist/Theme/theme.dart';
 
 //Code
 import 'package:companyplaylist/src/login_code.dart';
-
-//Model
-import 'package:companyplaylist/model/user_model.dart';
-import 'package:provider/provider.dart';
+import 'package:companyplaylist/src/user_provider_code.dart';
 
 class LoginPage extends StatefulWidget{
   @override
@@ -60,7 +58,7 @@ class LoginPageState extends State<LoginPage>{
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
-              color: main_color,
+              color: top_color,
             ),
             child: Column(
               children: <Widget>[
@@ -69,12 +67,7 @@ class LoginPageState extends State<LoginPage>{
                 ),
                 Text(
                   "슬기로운 회사생활",
-                  style: TextStyle(
-                    fontFamily: fontStyle,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                    color: text_color,
-                  ),
+                  style: customStyle(20, 'Bold', white_color)
                 ),
                 SizedBox(
                   height: 20,
@@ -85,13 +78,8 @@ class LoginPageState extends State<LoginPage>{
                       width: 212,
                     ),
                     Text(
-                      "Release 0.1.0615",
-                      style: TextStyle(
-                        fontFamily: fontStyle,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                        color: text_color
-                      ),
+                      "Release 0.1.0619",
+                      style: customStyle(18, 'Regular', white_color)
                     ),
                   ],
                 )
@@ -106,19 +94,14 @@ class LoginPageState extends State<LoginPage>{
               height: 600,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
-                color: Color(0xffFFFFFF),
+                color: white_color,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
                     "로그인",
-                    style: TextStyle(
-                      fontFamily: fontStyle,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      color: red_color
-                    ),
+                    style: customStyle(18, 'Medium', blue_color)
                   ),
                   SizedBox(
                     height: 10,
@@ -161,19 +144,14 @@ class LoginPageState extends State<LoginPage>{
                         ),
 
                         child: RaisedButton(
-                        color: red_color,
+                        color: blue_color,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),
 
                           child: Text(
                             "로그인",
-                            style: TextStyle(
-                              fontFamily: fontStyle,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xffFFFFFF),
-                            ),
+                            style: customStyle(18, 'Medium', white_color)
                           ),
 
                           onPressed: () async {
@@ -182,7 +160,6 @@ class LoginPageState extends State<LoginPage>{
                             loginSuccess = await loginCheck.loginCheck(_mailCon.text, _pwCon.text);
 
                             if(loginSuccess){
-                              print(autoLoginValue);
                               if(autoLoginValue == true){
                                 up.setPreferencesLoginUserEmail(_mailCon.text);
                               }
@@ -202,7 +179,7 @@ class LoginPageState extends State<LoginPage>{
                       ),
                       Checkbox(
                         value: autoLoginValue,
-                        activeColor: main_color,
+                        activeColor: top_color,
                         onChanged: (bool value) {
                           setState(() {
                             autoLoginValue = value;
@@ -211,12 +188,7 @@ class LoginPageState extends State<LoginPage>{
                       ),
                       Text(
                         "자동 로그인",
-                        style: TextStyle(
-                          fontFamily: fontStyle,
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.w100,
-                          color: Color(0xff2F3A55)
-                        ),
+                        style: customStyle(15, 'Thin', top_color)
                       ),
                       SizedBox(
                         width: 30,
@@ -224,12 +196,7 @@ class LoginPageState extends State<LoginPage>{
                       InkWell(
                         child: Text(
                           "회원가입",
-                          style: TextStyle(
-                              fontFamily: fontStyle,
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.w100,
-                              color: Color(0xff2F3A55)
-                          ),
+                          style: customStyle(15, 'Thin', top_color)
                         ),
                         onTap: () {
                           Navigator.push(context, MaterialPageRoute(builder: (context) => SingUpPage()));
@@ -248,12 +215,7 @@ class LoginPageState extends State<LoginPage>{
                       InkWell(
                         child: Text(
                           "SNS 계정 간편 로그인",
-                          style: TextStyle(
-                              fontFamily: fontStyle,
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.w100,
-                              color: Color(0xff2F3A55)
-                          ),
+                          style: customStyle(15, 'Thin', top_color)
                         ),
                         onTap: () {
                           Navigator.push(context, MaterialPageRoute(builder: (context) => SNSLoginPage()));

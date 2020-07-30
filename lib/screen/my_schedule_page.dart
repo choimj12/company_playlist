@@ -1,7 +1,13 @@
+//나의 일정 화면 입니다.
+
 import 'package:flutter/material.dart';
-import 'package:companyplaylist/src/user_provider_code.dart';
-import 'package:companyplaylist/model/schedule_model.dart';
 import 'package:provider/provider.dart';
+
+//Theme
+import 'package:companyplaylist/Theme/theme.dart';
+
+//Code
+import 'package:companyplaylist/src/user_provider_code.dart';
 
 class MySchedulePage extends StatefulWidget{
   @override
@@ -10,29 +16,9 @@ class MySchedulePage extends StatefulWidget{
 
 class MySchedulePageState extends State<MySchedulePage>{
   UserProvider up;
-  MyScheduleModel myScheduleModel;
-
-  @override
-  void initState(){
-    super.initState();
-    myScheduleModel.fetchMySchedule();
-  }
 
   @override
   Widget build(BuildContext context) {
-    up = Provider.of<UserProvider>(context);
-    return Container(
-      child: Column(
-        children: <Widget>[
-          Text(
-            myScheduleModel.mySchedule.length.toString(),
-            style: TextStyle(
-              fontSize: 20
-            ),
-            //myScheduleModel.fetchMySchedule()
-          ),
-        ],
-      ),
-    );
+    return null;
   }
 }
