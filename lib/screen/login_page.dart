@@ -91,7 +91,7 @@ class LoginPageState extends State<LoginPage>{
             child: Container(
               padding: EdgeInsets.only(top: 30, left: 30, right: 30),
               width: 412,
-              height: 600,
+              height: MediaQuery.of(context).size.height,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 color: white_color,

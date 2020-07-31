@@ -8,6 +8,12 @@ const Color grey_color = Color(0xffAEAEAE);
 const Color tab_color = Color(0xffBDC1CB);
 const Color divider_color = Color(0xff29304D);
 const Color bottom_color = Color(0xff8CCCCB);
+const Color schedule_chip_color= Color(0xffF7F9FC);
+const Color boarder_color = Color(0xffEEEEEE);
+const Color chip_color_blue = Color(0xffDDE9F8);
+const Color chip_color_purple = Color(0xffD3DBFF);
+const Color chip_color_red = Color(0xffFFD1CF);
+const Color chip_color_green = Color(0xffD3FFD9);
 
 String fontStyle = 'NotoSansKR';
 

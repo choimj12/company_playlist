@@ -19,22 +19,43 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+  Modal modal = Modal();
   //불러올 페이지 리스트
-  List<Widget> _page = [SchedulePage(), SearchPage(), CreatePage(), PushPage(), SettingPage()];
+  List<Widget> _page = [SchedulePage(), SearchPage(), null,PushPage(), SettingPage()];
 
   int _currentIndex = 0;
 
   void _onTap(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
+    if(index == 2){
+      modal.mainBottomSheet(context);
+    }
+    else{
+      setState(() {
+        _currentIndex = index;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _page[_currentIndex],
-
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            flex: 9,
+            child: _page[_currentIndex],
+          ),
+          Padding(
+            padding: EdgeInsets.only(bottom: 5),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              color: Colors.red,
+            ),
+          )
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: white_color,
         selectedItemColor: top_color,

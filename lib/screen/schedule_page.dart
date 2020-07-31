@@ -6,11 +6,16 @@ import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
+//Screen
+import 'package:companyplaylist/screen/my_schedule_page.dart';
+
 //Theme
 import 'package:companyplaylist/Theme/theme.dart';
 
 //Code
 import 'package:companyplaylist/src/user_provider_code.dart';
+
+import 'my_schedule_page.dart';
 
 class SchedulePage extends StatefulWidget{
   @override
@@ -79,7 +84,7 @@ class SchedulePageState extends State<SchedulePage>{
           ),
         ],
       ),
-      body: SingleChildScrollView(
+      body: Container(
         child: Column(
           children: <Widget>[
             Stack(
@@ -168,31 +173,12 @@ class SchedulePageState extends State<SchedulePage>{
                 ],
               ),
             ),
-            Container(
-              height: 100,
-              color: Colors.yellow,
+            Padding(
+              padding: EdgeInsets.only(top: 5),
             ),
-            Container(
-              height: 100,
-              color: Colors.yellow,
-            ),
-            Container(
-              height: 100,
-              color: Colors.yellow,
-            ),
-            Container(
-              height: 100,
-              color: Colors.yellow,
-            ),
-            Container(
-              height: 100,
-              color: Colors.yellow,
-            ),
-            Container(
-              height: 100,
-              color: Colors.yellow,
-            ),
-
+            Expanded(
+              child: MySchedulePage(),
+            )
           ],
         ),
       ),
