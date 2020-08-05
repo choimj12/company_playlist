@@ -1,4 +1,4 @@
-//로그인 후 처음 보이는 메인화면 입니다.
+//검색 화면 입니다.
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,8 +10,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:companyplaylist/Theme/theme.dart';
 
 //Code
-import 'package:companyplaylist/src/format_code.dart';
-import 'package:companyplaylist/src/user_provider_code.dart';
+import 'package:companyplaylist/Src/format_code.dart';
+import 'package:companyplaylist/Src/user_provider_code.dart';
 
 class SearchPage extends StatefulWidget{
   @override

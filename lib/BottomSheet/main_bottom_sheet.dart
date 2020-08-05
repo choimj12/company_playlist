@@ -1,22 +1,15 @@
-//작성할 메뉴를 선택하는 화면입니다.
+//메뉴를 선택하는 bottom sheet 입니다.
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 //Theme
 import 'package:companyplaylist/Theme/theme.dart';
-import 'package:flutter/painting.dart';
 
-import '../Theme/theme.dart';
-import '../Theme/theme.dart';
-import '../Theme/theme.dart';
-import '../Theme/theme.dart';
-import '../Theme/theme.dart';
-import '../Theme/theme.dart';
+//BottomSheet
+import 'package:companyplaylist/BottomSheet/work_bottom_sheet.dart';
 
-class Modal{
-  mainBottomSheet(BuildContext context){
-    showModalBottomSheet(
+mainBottomSheet(BuildContext context){
+  showModalBottomSheet(
       context: context,
       builder: (BuildContext context){
         return Container(
@@ -41,65 +34,18 @@ class Modal{
                       style: customStyle(14, 'Regular', top_color),
                     ),
                     onPressed: () {
-                      return showModalBottomSheet(
-                        isScrollControlled: true,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(20),
-                            topLeft: Radius.circular(20)
-                          )
-                        ),
-                        context: context,
-                        builder: (BuildContext context){
-                          return Padding(
-                            padding: MediaQuery.of(context).viewInsets,
-                            child: Container(
-                              padding: EdgeInsets.only(top: 30, left: 20, right: 20, bottom: 10),
-                              height: 150,
-                              child: Column(
-                                children: <Widget>[
-                                  IntrinsicHeight(
-                                    child: Row(
-                                      children: <Widget>[
-                                        Chip(
-                                          label: Text(
-                                            "내근 일정",
-                                            style: customStyle(14, 'Regular', top_color),
-                                          ),
-                                          backgroundColor: chip_color_blue,
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(left: 15),
-                                        ),
-                                        tabDivider(2, top_color, 15, 15),
-                                        Container(
-                                          width: 200,
-                                          child: TextFormField(),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(left: 15),
-                                        ),
-                                        CircleAvatar(
-                                          radius: 20,
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        }
-                      );
-
+                      return workBottomSheet(context, "내근");
                     },
                   ),
-                  Chip(
-                      backgroundColor: chip_color_blue,
-                      label: Text(
-                        "외근 일정",
-                        style: customStyle(14, 'Regular', top_color),
-                      )
+                  ActionChip(
+                    backgroundColor: chip_color_blue,
+                    label: Text(
+                      "외근 일정",
+                      style: customStyle(14, 'Regular', top_color),
+                    ),
+                    onPressed: () {
+                      return workBottomSheet(context, "외근");
+                    },
                   ),
                   Chip(
                       backgroundColor: chip_color_blue,
@@ -169,6 +115,5 @@ class Modal{
           ),
         );
       }
-    );
-  }
+  );
 }

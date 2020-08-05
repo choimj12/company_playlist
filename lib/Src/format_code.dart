@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Format{
   String weekFormat(DateTime date){
     String week;
@@ -40,8 +38,7 @@ class Format{
   String dateFormat(DateTime date){
     String dateText;
 
-    dateText = date.month.toString() + "월 " + date.day.toString() + "일 (" + weekFormat(date) + ")";
-
+    dateText = date.month.toString() + "월 " + date.day.toString() + "일 " + weekFormat(date) + "요일";
     return dateText;
   }
 }

@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 //Screen
-import 'package:companyplaylist/screen/home_page.dart';
-import 'package:companyplaylist/screen/login_page.dart';
+import 'package:companyplaylist/Screen/home_page.dart';
+import 'package:companyplaylist/Screen/login_page.dart';
 
 //Code
-import 'package:companyplaylist/src/user_provider_code.dart';
+import 'package:companyplaylist/Src/user_provider_code.dart';
 
 class AuthPage extends StatelessWidget{
 

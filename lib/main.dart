@@ -2,7 +2,7 @@ import 'package:companyplaylist/screen/auth_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
-import 'package:companyplaylist/src/user_provider_code.dart';
+import 'package:companyplaylist/Src/user_provider_code.dart';
 
 void main() {
   runApp(MyApp());

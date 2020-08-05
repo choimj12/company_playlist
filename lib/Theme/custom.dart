@@ -4,43 +4,6 @@ import 'package:flutter/material.dart';
 //Theme
 import 'package:companyplaylist/Theme/theme.dart';
 
-import 'theme.dart';
-import 'theme.dart';
-
-String fontStyle = 'NotoSansKR';
-
-Map<String, FontWeight> fontWeight = {
-  'Thin': FontWeight.w100,
-  'Light': FontWeight.w300,
-  'Regular': FontWeight.w400,
-  'Medium': FontWeight.w500,
-  'Bold': FontWeight.w700,
-  'Black': FontWeight.w900
-};
-
-TextStyle customStyle(double fontSize, String fontWeightName, Color fontColor){
-  TextStyle custom = TextStyle(
-      fontFamily: fontStyle,
-      fontSize: fontSize,
-      fontWeight: fontWeight[fontWeightName],
-      color: fontColor
-  );
-
-  return custom;
-}
-
-TextStyle customStyleHeigh(double fontSize, String fontWeightName, Color fontColor, double height){
-  TextStyle custom = TextStyle(
-      fontFamily: fontStyle,
-      fontSize: fontSize,
-      fontWeight: fontWeight[fontWeightName],
-      color: fontColor,
-      height: height
-  );
-
-  return custom;
-}
-
 Container tabMenu(String title, int tabIndex, int index){
   Container tabContainer = Container(
       height: 40,

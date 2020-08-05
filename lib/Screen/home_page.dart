@@ -3,15 +3,17 @@
 import 'package:flutter/material.dart';
 
 //Screen
-import 'package:companyplaylist/screen/schedule_page.dart';
-import 'package:companyplaylist/screen/search_page.dart';
-import 'package:companyplaylist/screen/create_page.dart';
-import 'package:companyplaylist/screen/push_page.dart';
-import 'package:companyplaylist/screen/setting_page.dart';
+import 'package:companyplaylist/Screen/schedule_page.dart';
+import 'package:companyplaylist/Screen/search_page.dart';
+import 'package:companyplaylist/Screen/push_page.dart';
+import 'package:companyplaylist/Screen/setting_page.dart';
 
 //Theme
 import 'package:companyplaylist/Theme/theme.dart';
 import 'package:flutter/rendering.dart';
+
+//BottomSheet
+import 'package:companyplaylist/BottomSheet/main_bottom_sheet.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -19,7 +21,6 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  Modal modal = Modal();
   //불러올 페이지 리스트
   List<Widget> _page = [SchedulePage(), SearchPage(), null,PushPage(), SettingPage()];
 
@@ -27,7 +28,7 @@ class HomePageState extends State<HomePage> {
 
   void _onTap(int index) {
     if(index == 2){
-      modal.mainBottomSheet(context);
+      mainBottomSheet(context);
     }
     else{
       setState(() {

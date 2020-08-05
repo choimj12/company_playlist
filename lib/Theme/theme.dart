@@ -37,6 +37,18 @@ TextStyle customStyle(double fontSize, String fontWeightName, Color fontColor){
   return custom;
 }
 
+TextStyle customStyleHeigh(double fontSize, String fontWeightName, Color fontColor, double height){
+  TextStyle custom = TextStyle(
+      fontFamily: fontStyle,
+      fontSize: fontSize,
+      fontWeight: fontWeight[fontWeightName],
+      color: fontColor,
+      height: height
+  );
+
+  return custom;
+}
+
 Container tabMenu(String title, int tabIndex, int index){
   Container tabContainer = Container(
       height: 40,

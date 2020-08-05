@@ -7,15 +7,13 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 //Screen
-import 'package:companyplaylist/screen/my_schedule_page.dart';
+import 'package:companyplaylist/Screen/my_schedule_page.dart';
 
 //Theme
 import 'package:companyplaylist/Theme/theme.dart';
 
 //Code
-import 'package:companyplaylist/src/user_provider_code.dart';
-
-import 'my_schedule_page.dart';
+import 'package:companyplaylist/Src/user_provider_code.dart';
 
 class SchedulePage extends StatefulWidget{
   @override

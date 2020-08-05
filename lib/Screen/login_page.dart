@@ -4,15 +4,15 @@ import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
 //Screen
-import 'package:companyplaylist/screen/singup_page.dart';
-import 'package:companyplaylist/screen/snslogin_page.dart';
+import 'package:companyplaylist/Screen/singup_page.dart';
+import 'package:companyplaylist/Screen/snslogin_page.dart';
 
 //Theme
 import 'package:companyplaylist/Theme/theme.dart';
 
 //Code
-import 'package:companyplaylist/src/login_code.dart';
-import 'package:companyplaylist/src/user_provider_code.dart';
+import 'package:companyplaylist/Src/login_code.dart';
+import 'package:companyplaylist/Src/user_provider_code.dart';
 
 class LoginPage extends StatefulWidget{
   @override
