@@ -57,11 +57,17 @@ class MySchedulePageState extends State<MySchedulePage>{
                     return request(item.data["type"], item.data["start_time"], item.data["end_time"], item.data["title"], item.data["requester"]);
                     break;
                   default:
-                    return work(item.data["type"], item.data["start_time"], item.data["end_time"], item.data["title"], item.data["progress"], item.data["write_time"]);
+                    return Theme(
+                      data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+                      child: work(item.data["type"], item.data["start_time"], item.data["end_time"], item.data["title"], item.data["progress"], item.data["write_time"], item.data["project"], item.data["detail"], context, item.documentID),
+                    );
                 }
               },
               separatorBuilder: (context, index) {
-                return Divider();
+                return Divider(
+                  thickness: 2,
+                  color: Colors.black,
+                );
               },
             )
           );

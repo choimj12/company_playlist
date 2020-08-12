@@ -1,9 +1,14 @@
 //내근 및 외근 스케줄을 입력하는 bottom sheet 입니다.
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 //Theme
 import 'package:companyplaylist/Theme/theme.dart';
+
+//Src
+import 'package:companyplaylist/Src/user_provider_code.dart';
 
 //BottomSheet
 import 'package:companyplaylist/BottomSheet/date_set_bottom_sheet.dart';
@@ -12,6 +17,19 @@ workBottomSheet(BuildContext context, String type){
   TextEditingController _titleCon = TextEditingController();
 
   String date = "날짜";
+  
+  UserProvider up;
+
+  String fnType = "type";
+  String fnDetail = "detail";
+  String fnEndTime = "end_time";
+  String fnProgree = "progress";
+  String fnStartDate = "start_date";
+  String fnStartTime = "start_time";
+  String fnTitle = "title";
+  String fnWriteTime = "write_time";
+  String fnWriter = "writer";
+  String fnEndDate = "end_date";
 
   showModalBottomSheet(
       isScrollControlled: true,
@@ -23,6 +41,7 @@ workBottomSheet(BuildContext context, String type){
       ),
       context: context,
       builder: (BuildContext context){
+        up = Provider.of<UserProvider>(context);
         return StatefulBuilder(
           builder: (BuildContext context, StateSetter setState){
             return Padding(
@@ -67,7 +86,19 @@ workBottomSheet(BuildContext context, String type){
                                         Icons.arrow_upward
                                     ),
                                     onPressed: _titleCon.text == '' ? null : () {
-                                      print(_titleCon.text);
+                                      print(up.getUserEmail());
+                                      Firestore.instance.collection("my_schedule").add({
+                                        fnType : "내근",
+                                        fnDetail : "Flutter 개발",
+                                        fnEndTime : "18:00",
+                                        fnProgree : "진행전",
+                                        fnStartDate : date,
+                                        fnStartTime : "09:00",
+                                        fnTitle : _titleCon.text,
+                                        fnWriter : up.getUserEmail(),
+                                        fnWriteTime : DateTime.now().toString(),
+                                        fnEndDate : date,
+                                      });
                                     }
                                 )
                             ),
@@ -97,8 +128,13 @@ workBottomSheet(BuildContext context, String type){
                                 ],
                               ),
                             ),
-                            onTap: (){
-                              dateSetBottomSheet(context);
+                            onTap: () async {
+                              String setDate = await dateSetBottomSheet(context);
+                              if(setDate != '') {
+                                setState(() {
+                                  date = setDate;
+                                });
+                              }
                             },
                           ),
                           Padding(
