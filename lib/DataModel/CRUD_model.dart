@@ -18,9 +18,9 @@ class CRUDModel extends ChangeNotifier {
     return work;
   }
 
-  /*Stream<QuerySnapshot> fetchWorkAsStream(){
+  Stream<QuerySnapshot> fetchWorkAsStream(){
     return _api.streamDataCollection();
-  }*/
+  }
 
   Future<Work> getWorkById(String id) async{
     var doc = await _api.getDocumentById(id);
